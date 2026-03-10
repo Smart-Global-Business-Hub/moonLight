@@ -134,6 +134,8 @@ function FAQItem({
 
 export default function LandingPageResponsive({ onScheduleConsultation }: LandingPageProps) {
   const [openFaq, setOpenFaq] = useState<string | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
+  const contactPhone = "+971 50 123 4567";
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -141,14 +143,66 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const openWhatsApp = () => {
-    const phone = "971501234567";
-    const message = encodeURIComponent("Hello! I want to speak with a professional.");
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-  };
+  const openContactPopup = () => setContactOpen(true);
+  const closeContactPopup = () => setContactOpen(false);
 
   return (
     <div className="bg-white w-full overflow-x-hidden">
+      {contactOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={closeContactPopup}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl bg-white shadow-xl p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <h3 className="text-lg font-medium text-gray-900">
+                Get in Touch with Our Professionals
+              </h3>
+              <button
+                type="button"
+                onClick={closeContactPopup}
+                className="text-gray-500 hover:text-gray-700"
+                aria-label="Close"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M18 6L6 18M6 6l12 12"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="mt-4">
+              <p className="text-sm text-gray-600">Have questions or need assistance? Our experienced team is ready to help.
+
+                Call us at:</p>
+              <a
+                href={`tel:${contactPhone.replace(/\s/g, "")}`}
+                className="mt-1 inline-block text-base font-semibold text-[#983E76]"
+              >
+                {contactPhone}
+              </a>
+            </div>
+            <div className="mt-6 flex justify-end">
+              <button
+                type="button"
+                onClick={closeContactPopup}
+                className="px-4 py-2 rounded-lg bg-[#983E76] text-white font-medium"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Hero Section */}
       <section className="bg-[#ffeef9] rounded-b-[40px] lg:rounded-[40px] mx-0 lg:mx-6 xl:mx-12 mt-0 lg:mt-12 pt-24 lg:pt-32 pb-16 lg:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,7 +222,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
                     <path d="M5 12h12M13 6l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </GradientButton>
-                <OutlineButton onClick={openWhatsApp}>
+                <OutlineButton onClick={openContactPopup}>
                   Speak with a Professional
                 </OutlineButton>
               </div>
@@ -233,7 +287,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
                 <p className="text-base text-gray-700 mb-6">
                   If you're unsure where to begin, we're here to guide you.
                 </p>
-                <GradientButton onClick={openWhatsApp}>
+                <GradientButton onClick={openContactPopup}>
                   Speak with a Professional
                 </GradientButton>
               </div>
@@ -320,7 +374,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
             <p className="text-xl sm:text-2xl lg:text-3xl text-gray-700 font-light text-center lg:text-left max-w-3xl">
               When you're ready, feel free to call us and schedule an appointment. Support is just a phone call away.
             </p>
-            <GradientButton onClick={() => window.open("https://wa.me/971XXXXXXXXX?text=Hello,%20I%20want%20to%20schedule%20now", "_blank")} className="flex-shrink-0">
+            <GradientButton onClick={openContactPopup} className="flex-shrink-0">
               Schedule Now
             </GradientButton>
           </div>
@@ -434,7 +488,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
             <p className="text-xl sm:text-2xl lg:text-3xl text-gray-700 font-light text-center lg:text-left max-w-3xl">
               Feel free to call us to schedule an appointment.
             </p>
-            <GradientButton onClick={() => window.open("https://wa.me/971XXXXXXXXX?text=Hello,%20I%20want%20to%20schedule%20now", "_blank")} className="flex-shrink-0">
+            <GradientButton onClick={openContactPopup} className="flex-shrink-0">
               Schedule Now
             </GradientButton>
           </div>
@@ -587,7 +641,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
                   <path d="M5 12h12M13 6l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </GradientButton>
-              <OutlineButton onClick={openWhatsApp}>
+              <OutlineButton onClick={openContactPopup}>
                 Speak with a Professional
               </OutlineButton>
             </div>

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import imgVector3 from "figma:asset/13a40369d16d8e80d9dd23f7c405f47e20bf6a25.png";
-import imgA from "figma:asset/0fbbe7920df326155dd4738fa36182d6af5a3bda.png";
-import imgA1 from "figma:asset/01309999b3155a48c2a33db8b06d771d306407f3.png";
-import imgA2 from "figma:asset/8b968ec65d2525c2ff1482b5e6208c63afdd3ed9.png";
-import imgA3 from "figma:asset/455f73463755b825cdfe0535ff98f364716668e0.png";
-import imgVector4 from "figma:asset/b302cde32e6f96ec5c012115c319795e5d88e1c5.png";
-import imgVector5 from "figma:asset/f6e3d3d21eeccfd9c6f3b3390f21423b92a1384b.png";
+import imgA from "../assets/cws1.png";
+import imgA1 from "../assets/cws2.png";
+import imgA2 from "../assets/cws3.png";
+import imgA3 from "../assets/cws4.png";
+import imgVector4 from "../assets/Vector.png";
+import imgVector5 from "../assets/Vector2.png";
 import imgVector6 from "figma:asset/c04d61b250a84e4ec8ab007ff9803caa8bed4ff6.png";
 
 type LandingPageProps = {
@@ -206,7 +206,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
       {/* Hero Section */}
       <section className="bg-[#ffeef9] rounded-b-[40px] lg:rounded-[40px] mx-0 lg:mx-6 xl:mx-12 mt-0 lg:mt-12 pt-24 lg:pt-32 pb-16 lg:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 mt-15 mb-15">
             {/* Left Content */}
             <div className="flex-1 text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] font-light text-gray-800 leading-tight mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -248,7 +248,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
       </section>
 
       {/* Support Section */}
-      <section id="conditions" className="py-16 lg:py-24 scroll-mt-24">
+      <section id="conditions" className="py-16 lg:py-24 scroll-mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -656,21 +656,7 @@ export default function LandingPageResponsive({ onScheduleConsultation }: Landin
             {/* Logo & Tagline */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 relative">
-                  <svg viewBox="0 0 50 50" fill="none" className="w-full h-full">
-                    <circle cx="25" cy="25" r="24" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
-                    <path
-                      d="M15 25C15 19.4772 19.4772 15 25 15C30.5228 15 35 19.4772 35 25C35 30.5228 30.5228 35 25 35"
-                      stroke="rgba(255,255,255,0.6)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <div className="flex flex-col text-white">
-                  <span className="font-bold text-base tracking-[3px]" style={{ fontFamily: 'Poppins, sans-serif' }}>MOONLIGHT</span>
-                  <span className="text-xs tracking-[1.5px] opacity-70" style={{ fontFamily: 'Poppins, sans-serif' }}>BEHAVIORAL CENTER</span>
-                </div>
+                  <img src="/moonlight-logo.png" alt="Logo" className="w-46" />
               </div>
               <p className="text-white/80 text-sm leading-relaxed">
                 Compassionate care. Confidential support.<br />
